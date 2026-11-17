@@ -37,3 +37,16 @@ Add a row to the xrefs file: `/data/shared/biomarkerdb/releases/data/current/mis
   ```
   doid,Disease Ontology,http://purl.obolibrary.org/obo/DOID_%s,123
   ```
+## KG Release Pipeline
+1. Convert `biomarkerdb` JSON objects to the NT format using [format-converter](https://github.com/clinical-biomarkers/format-converter)
+   ```
+   cd /data/shared/repos/format-converter
+   source env/bin/activate
+   python main.py /data/shared/biomarkerdb/releases/data/current/jsondb/biomarkerdb /data/shared/biomarkerdb/downloads/nt/current/all-biomarkers.nt
+   ```
+2. Convert NT files to the OWL format using [nt-owlnets-kg-converter](https://github.com/clinical-biomarkers/nt-owlnets-kg-converter)
+   ```
+   cd /data/shared/repos/nt-owlnets-kg-converter
+   source env/bin/activate
+   python main.py /data/shared/biomarkerdb/downloads/nt/current/all-biomarkers.nt
+   ```
