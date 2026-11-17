@@ -13,7 +13,7 @@ A-to-Z documentation for data releases
 1. Properly formatted TSV files must be placed into the Downloads directory (`/data/shared/biomarkerdb/downloads/<data_source>/current/<data_source>.tsv`). Currently they are either already present there, or being output from the `biomarker-extraction` pipeline.
    ```
    # Replace <data_source> with the name of the source where the new data comes from (use snake_case)
-   mkdir -p /data/shared/biomarkerdb/downloads/<data_source>/<yyyy_mm_dd> # yyyy_mm_dd is today's date
+   mkdir -p /data/shared/biomarkerdb/downloads/<data_source>/$(date +%Y_%m_%d) # creates today's date dir
    # Create the "current" symlink to today's directory
    ln -s $(date +%Y_%m_%d) /data/shared/biomarkerdb/downloads/<data_source>/current
    ```
